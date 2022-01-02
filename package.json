@@ -25,12 +25,14 @@
   "node-red"  : {
     "version": ">=1.0.0",
     "nodes": {
-      "avs": "avs.js"
+      "avs": "avs.js",
+      "audio" : "audio.js"
     }
   },
   "dependencies": {
     "content-type-parser": "^1.0.2",
     "http-message-parser": "^0.0.34",
-    "http2": "^3.3.7"
+    "temp": "^0.9.4",
+    "fluent-ffmpeg": "^2.1.2"
   }
 }

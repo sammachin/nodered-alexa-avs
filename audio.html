@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    RED.nodes.registerType('alexa-audio',{
+        category: 'function',
+        color: '#00CAFF',
+        defaults: {
+            name: {value:""},
+            ffmpeg_path : {value: "/usr/bin/ffmpeg"},
+            mode: {value: "", required: "true"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "logo_RGB_white.png",
+        label: function() {
+            return this.name||"Audio";
+        },
+        oneditprepare: function () {
+            $("#node-input-mode").typedInput({
+            types: [
+            {
+            value: "mode",
+            options: [
+                { value: "mp3", label: "To MP3"},
+                { value: "wav", label: "To WAV"}
+            ]
+            }
+            ]
+            })
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="alexa-audio">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-baseURL">Path to ffmpeg Endpoint</label>
+        <input type="text" id="node-input-ffmpeg_path" style="width:70%;" placeholder="/usr/bin/ffmpeg">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-accessToken">Mode</label>
+        <input type="text" id="node-input-mode">
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="alexa-audio">
+    <p>Convert Audio formats to/from the Alexa Voice Service.
+        This node requires ffmpeg to be installed on the host system and the path to the binary to be set, the default is <code>/usr/bin/ffmpeg</code>
+
+        Setting the Mode to "To WAV" will convert the audio in msg.payload into mono 16Khz PCM audio suitable for making a request to AVS.
+        Setting the Mode to "To MP3" will convert the audio to mono 22.05kHz MP3 suitable for playback.
+    </p>
+</script>

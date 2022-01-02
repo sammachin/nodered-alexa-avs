@@ -171,6 +171,8 @@ function jsonparts(data){
                     data.multipart.splice(i, 1);
                 } else if (d.headers['Content-Type'] == 'application/json; charset=UTF-8'){
                     data.multipart[i].body = JSON.parse(d.body)
+                } else if (d.headers['Content-Type'] == 'application/octect-stream'){
+                    data.multipart[i].body = Buffer.from(d.body.toString().slice(2), 'binary')
                 }
             });
         } catch (e){
