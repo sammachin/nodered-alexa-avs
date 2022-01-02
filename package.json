@@ -1,0 +1,36 @@
+{
+  "name": "@sammachin/nodered-alexa-voice-service",
+  "version": "0.0.1",
+  "description": "Node-RED nodes for the Alexa Voice Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sammachin/nodered-alexa-avs.git"
+  },
+  "engines": {
+      "node": ">=14.0.0"
+    },
+  "keywords": [
+    "nodered"
+  ],
+  "author": "Sam Machin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sammachin/nodered-alexa-avs/issues"
+  },
+  "homepage": "https://github.com/sammachin/nodered-alexa-avs#readme",
+  "node-red"  : {
+    "version": ">=1.0.0",
+    "nodes": {
+      "avs": "avs.js"
+    }
+  },
+  "dependencies": {
+    "content-type-parser": "^1.0.2",
+    "http-message-parser": "^0.0.34",
+    "http2": "^3.3.7"
+  }
+}

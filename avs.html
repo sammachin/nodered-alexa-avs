@@ -1,0 +1,67 @@
+<script type="text/javascript">
+    RED.nodes.registerType('alexa-avs',{
+        category: 'function',
+        color: '#00CAFF',
+        defaults: {
+            name: {value:""},
+            accessToken : {},
+            accessTokenType: {},
+            baseURL: {},
+            baseURLType: {}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "logo_RGB_white.png",
+        label: function() {
+            return this.name||"AVS";
+        },
+        oneditprepare: function () {
+            var makeTypedInputOpt = function (label, value) {
+                return {
+                    value: value,
+                    label: label,
+                    hasValue: false
+                }
+            }
+            $("#node-input-baseURL").typedInput({
+                default: "https://alexa.na.gateway.devices.a2z.com",
+                types: [
+                    makeTypedInputOpt("US", "https://alexa.na.gateway.devices.a2z.com"),
+                    makeTypedInputOpt("Europe", "https://alexa.eu.gateway.devices.a2z.com"),
+                    makeTypedInputOpt("Asia", "https://alexa.fe.gateway.devices.a2z.com"),
+                    , 'flow', 'global', 'str', 'env'
+                ],
+                typeField: $("#node-input-baseURLType"),
+            })
+            $("#node-input-accessToken").typedInput({
+                default: "msg",
+                types: ['msg', 'flow', 'global', 'str', 'env'],
+                typeField: $("#node-input-accessTokenType"),
+            })
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="alexa-avs">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-baseURL">AVS Endpoint</label>
+        <input type="hidden" id="node-input-baseURLType">
+        <input type="text" id="node-input-baseURL" style="width:70%;">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-accessToken">Access Token</label>
+        <input type="hidden" id="node-input-accessTokenType">
+        <input type="text" id="node-input-accessToken" style="width:70%;" placeholder="accessToken">
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="alexa-avs">
+    <p>Send audio to the Alexa Voice Service</p>
+</script>
