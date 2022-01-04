@@ -163,3 +163,6 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos
 package-lock.json
+
+
+scratch.js

@@ -7,7 +7,11 @@
             accessToken : {},
             accessTokenType: {},
             baseURL: {},
-            baseURLType: {}
+            baseURLType: {},
+            ffmpeg: {},
+            ffmpegType: {},
+            output: {},
+            outputType: {}
         },
         inputs:1,
         outputs:1,
@@ -38,6 +42,25 @@
                 types: ['msg', 'flow', 'global', 'str', 'env'],
                 typeField: $("#node-input-accessTokenType"),
             })
+            $("#node-input-ffmpeg").typedInput({
+                default: "auto",
+                types: [
+                    makeTypedInputOpt("Auto", "auto"),
+                    
+                    ,'str'
+                ],
+                typeField: $("#node-input-ffmpegType"),
+            })
+            $("#node-input-output").typedInput({
+                default: "none",
+                types: [
+                    makeTypedInputOpt("None", "none"),
+                    makeTypedInputOpt("MP3 22.05KHz", "mp3"),
+                    makeTypedInputOpt("WAV 16KHz", "wav"),
+                    
+                ],
+                typeField: $("#node-input-outputType"),
+            })
         }
     });
 </script>
@@ -59,7 +82,18 @@
         <input type="hidden" id="node-input-accessTokenType">
         <input type="text" id="node-input-accessToken" style="width:70%;" placeholder="accessToken">
     </div>
+    
+    <div class="form-row">
+        <label for="node-input-output">Convert Audio Output</label>
+        <input type="hidden" id="node-input-outputType">
+        <input type="text" id="node-input-output" style="width:70%;">
+    </div>
 
+    <div class="form-row">
+        <label for="node-input-ffmpeg">Path to ffmpeg Token</label>
+        <input type="hidden" id="node-input-ffmpegType">
+        <input type="text" id="node-input-ffmpeg" style="width:70%;">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="alexa-avs">
