@@ -1,5 +1,5 @@
 {
-  "name": "@sammachin/nodered-alexa-voice-service",
+  "name": "@sammachin/node-red-alexa-voice-service",
   "version": "0.1.0",
   "description": "Node-RED nodes for the Alexa Voice Service",
   "main": "index.js",

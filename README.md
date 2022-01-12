@@ -10,6 +10,7 @@ This node will allow you to interact with the Alexa Voice Service (the same API 
 
 : payload (object) : the response from the Alexa Voice Service, certain objects will be binary audio buffers.
 
+AVS responds with a multipart object, the Node will parse this into a single object,
 ### Details
 
 `msg.payload` should be 16Khz PCM Mono audio, the node will attempt to convert any buffer input using ffmpeg but ideally you should capture in the correct format.
