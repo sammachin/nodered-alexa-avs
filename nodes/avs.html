@@ -96,6 +96,32 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="alexa-avs">
-    <p>Send audio to the Alexa Voice Service</p>
+<script type="text/markdown" data-help-name="alexa-avs">
+Send audio to the Alexa Voice Service
+   
+### Inputs
+
+: payload (buffer) :  the audio to send to the service.
+
+
+### Outputs
+
+: payload (object) : the response from the Alexa Voice Service, certain objects will be binary audio buffers.
+
+### Details
+
+`msg.payload` should be 16Khz PCM Mono audio, the node will attempt to convert any buffer input using ffmpeg but ideally you should capture in the correct format.
+
+`AVS Endpoint` is the avs server nearest to your application, Europe, US and Asia values are pre-set or advnaced users can manually set this.
+
+The `Access Token` should usually be passed in as a parameter on the message object as these have a limited time to live, however you can also hard code it or reference a context object.
+
+`Convert Audio Output` will set the format on all the response buffer objects to the same format either 22.05Khz Mono MP3 or 16Khz Mono WAV. Sometimes AVS responds with different bit rate samples in the same multipart response
+
+`Path to ffmpeg` The node will attempt to intstall ffmpeg binaries for common platforms but if this does not work you can manually install for your system and reference the binary path here eg `/usr/bib/ffmpeg`
+
+
+### References
+
+ - [Alexa Voice Service docs](https://developer.amazon.com/en-US/docs/alexa/alexa-voice-service/get-started-with-alexa-voice-service.html) 
 </script>
