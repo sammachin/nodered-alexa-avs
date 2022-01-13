@@ -102,15 +102,19 @@ Send audio to the Alexa Voice Service
 ### Inputs
 
 : payload (buffer) :  the audio to send to the service.
+: *dialogRequestId* (string) : Where the audio is part of an existing dialog the ID from the previous response
 
 
 ### Outputs
 
 : payload (object) : the response from the Alexa Voice Service, certain objects will be binary audio buffers.
+: dialogRequestId (string) : the dialog ID either as was set on the input or a new random string.
 
 ### Details
 
 `msg.payload` should be 16Khz PCM Mono audio, the node will attempt to convert any buffer input using ffmpeg but ideally you should capture in the correct format.
+
+`msg.dialogRequestId` is used by AVS to assocaite multiple interactions within the same conversation, if you are starting a new dialog this does not need to be set on the input and the node will generate one. For replies it should match the previous response
 
 `AVS Endpoint` is the avs server nearest to your application, Europe, US and Asia values are pre-set or advanced users can manually set this to another value.
 
