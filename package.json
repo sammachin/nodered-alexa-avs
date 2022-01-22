@@ -1,6 +1,6 @@
 {
   "name": "@sammachin/node-red-alexa-voice-service",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Node-RED nodes for the Alexa Voice Service",
   "main": "index.js",
   "scripts": {
